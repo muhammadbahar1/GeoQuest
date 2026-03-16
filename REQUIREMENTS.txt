@@ -1,0 +1,346 @@
+MAD Project - GitHub URL
+Due 9 Apr by 23:59 Points 40 Submitting a website url Available after 24 Feb at 15:00
+Module Code	CI6330
+Module Title	Mobile Application Development
+Assessment Title	MAD Project - GeoQuest: Location-Based Treasure Hunt App
+Element Label	E2
+Type	Summative – 40% of module mark
+Set by	Dr Gordon Johnson, Prof Graeme Jones and Dr Nandita Pattnaik
+Assessment due date and time	9th April 2026
+Formal feedback due date	After exam board
+All assignments must be submitted by the date and time specified above.
+
+You are required to submit an electronic copy of your completed assignment, in the file format(s) specified by the module team (e.g., Word, PDF, programme code files), via the Assignments section of Canvas and follow any specific instructions provided. Any change to this instruction will be advised via Canvas.
+
+If files are shared outside of Canvas (where specified by the module team), you must ensure that the files are accessible and available for staff to access without the need to request additional access privileges.
+
+In line with University Regulations coursework submitted up to a week late will be capped at 40%. Coursework submitted after this time will receive 0%.
+
+In case of illness or other issues affecting your studies please refer to the University Mitigating Circumstances and Extensions Regulations. Please note that once you have submitted your work you have judged yourself fit to undertake the assessment and cannot usually claim mitigating circumstances retrospectively. Please refer to the Mitigating Circumstances Regulations for more information.
+
+Guidance on avoiding academic assessment offences such as plagiarism and collusion can be found in the Digital Learning and Tools module on Canvas – see Academic Integrity.
+
+ 
+
+Word version of this Canvas pageLinks to an external site.
+Table of Contents
+Purpose of this assessment
+Learning Outcomes
+Coursework Specification
+Assessment Criteria
+Submission Requirements
+Use of Generative AI
+Academic Misconduct
+Purpose of this assessment
+Coursework Overview: GeoQuest - Location-Based Treasure Hunt App
+This is a mobile application development project in which you will develop a significant mobile application in pairs using an agile approach. You will allocated the technology to develop within either React Native (JS), Android (Kotlin), or iOS (Swift).
+
+You will showcase your design and programming skills through the development of a functional location-based application. While you will work in pairs, marking is individual and based on your personal contribution and performance. 
+
+You are required to design and develop GeoQuest, a location-based treasure hunt app inspired by real-world geocaching.
+
+GeoQuest enables users to discover and log virtual caches tied to real-world GPS locations. Users must physically travel to locations and use mobile sensors and application features to unlock and record finds.
+
+This assignment simulates a realistic mobile development scenario involving:
+•    Mobile sensors
+•    Platform frameworks
+•    APIs
+•    Persistent data
+•    UX and UI design considerations
+•    Platform-specific conventions
+
+Learning Outcomes
+The following module learning outcomes and professional body learning outcomes are tested in this assessment:
+
+Design and develop portfolio applications for two mobile platform environments.
+Explain the differences between native and cross-platform mobile application development, and the benefits and limitations of cross-platform involves.
+Make an informed choice between native and cross-platform based on application and project requirements.
+Design applications that conform to UX best principles and UI conventions of both major platforms, and understand the differences between them.
+Coursework specification
+The following presents the main project objectives:
+1. Scenario
+A cache is a virtual treasure placed at a real-world GPS location. When a player is within a defined proximity, the cache can be unlocked and logged.
+
+Each cache may include:
+•    Title and description
+•    GPS coordinates
+•    Clue or riddle
+•    Points value
+•    Optional photo evidence
+
+Your app must support discovery, navigation, and logging of caches.
+
+2. Gameplay Modes
+Your application must support at least one of the following. Supporting both may attract higher marks.
+
+Option A: Global Mode
+A shared world where users can:
+•    View public caches on a map
+•    Navigate to caches
+•    Log discoveries
+•    Earn points
+•    View leaderboards
+
+Option B: Private Event Mode
+Users can create private events for:
+•    Families
+•    Schools
+•    Companies
+•    University activities
+
+Event owners can:
+•    Create caches
+•    Set time windows
+•    Share invite codes
+•    Track participant progress
+
+Participants can:
+•    Join via code
+•    View event caches only
+•    Compete on event leaderboards
+
+3. Mandatory Technical Requirements
+Sensor Use
+
+Use at least two of the following sensors (but not limited to):
+•    GPS or location services (required)
+•    Accelerometer or step counter
+•    Compass or gyroscope
+•    Camera
+
+Sensor use must be meaningful and directly related to app functionality.
+
+Data Persistence
+
+Include at least one:
+•    Local database or storage
+•    Cloud DB backend e.g. Realms, Firebase, or other (note: that any costs occurred are your own)
+•    GeoQuest REST API integration (KU provided)
+
+Map Integration
+
+A map must be used to:
+•    Display caches
+•    Show user location
+•    Support some form of navigation
+
+User Interface
+Your app must demonstrate:
+•    Multiple screens
+•    Clear navigation
+•    Consistent design
+•    User feedback and status indicators
+•    Consideration of platform UI conventions
+
+4. User Interface
+The app must feature a clean, modern, and intuitive mobile interface
+UI design should prioritise short, frequent interactions
+Platform-appropriate UI frameworks must be used:
+SwiftUI for iOS
+Jetpack Compose for Android
+Navigation should be clear and consistent across the app
+Components should be used to ensure consistency and reusability.
+5. Agile Working Requirement
+As this is a paired project, you should demonstrate through your GitHub repository:
+•    Task planning or backlog
+•    Iterative development
+•    Evidence of collaboration
+•    Version control usage
+
+A short summary of your agile process must be included in the individual report.
+
+Assessment Criteria
+Assessment of your submission will be based on the following weighted assessment criteria as given below which relate to the specified module learning outcomes.
+
+Criterion
+
+Descriptor
+
+Marks
+
+Complexity and Feature Depth
+
+This criterion assesses the depth and sophistication of the implemented features. The application should extend beyond simple CRUD workflows and demonstrate meaningful integration of mobile capabilities. Higher marks are awarded where sensor use is well integrated into the app logic, where proximity-based unlocking is robust, where map interaction goes beyond basic marker placement, and where either Global Mode or Private Event Mode is implemented with clear supporting logic. Applications that include scoring systems, validation, error handling, and thoughtful feature design will achieve stronger marks.
+
+/ 16
+
+Technical Competence
+
+This criterion evaluates the student’s understanding of their chosen platform and development framework. The application should demonstrate appropriate architectural decisions, correct use of platform APIs, effective state management, and proper handling of permissions and sensors. Strong submissions show awareness of platform conventions and design philosophy rather than generic implementation.
+
+/ 12
+
+Professionalism and Code Quality
+
+This criterion assesses the professional standard of the code and development practice. The application should be clean, readable, and maintainable, with logical structure and consistent naming conventions. GitHub history should show meaningful, regular commits throughout the development period. The project should reflect iterative development and attention to usability and accessibility, including adherence to recognised UX principles and platform-specific UI conventions.
+
+/ 12
+
+Demonstration and Explanation
+
+(Video)
+
+This criterion assesses the clarity, structure, and technical understanding demonstrated in the video. Students should clearly explain the purpose of the app, identify its target users, and provide a structured walkthrough of key features. The demonstration should show meaningful sensor use and use representative data. Higher marks are awarded where students confidently explain technical decisions and show clear understanding of how features function.
+
+/ 7
+
+Individual Reflection
+
+(Report)
+
+This criterion assesses the depth of personal reflection. Students should clearly articulate their contribution to the project, justify platform choices, reflect on native versus cross-platform considerations, and identify areas for improvement. Strong reflections demonstrate insight and critical thinking rather than simple description.
+
+/ 3
+
+Viva
+In some cases, you may be required to attend a viva (oral assessment) to confirm you’re understanding and ownership of the submitted work. Your final mark may be adjusted based on the viva outcome.
+
+Multiplier
+
+Viva Assessment
+
+1.0
+
+Full understanding and clear demonstration of ownership
+
+0.6
+
+Partial understanding with minor gaps
+
+0.3
+
+Limited understanding with significant gaps
+
+0.0
+
+No meaningful understanding or ownership demonstrated
+
+ 
+
+Submission Requirements
+All the following are MANDATORY. No marks will be awarded without completion of all deliverables.
+
+1.    Application Portfolio
+
+The GeoQuest application will form part of your mobile development portfolio and must be managed using GitHub. 
+
+Verified students should have access to GitHub Pro for FREE via GitHub Student Developer Pack. I’d expect all CS students to use GitHub Pro as part of this assignment.
+
+Requirements
+•    A functional mobile application
+•    Hosted in a private GitHub repository
+•    Clear project structure and documentation
+•    Meaningful commit history
+•    Use of branches where appropriate
+•    Evidence of active contribution across the development period
+
+All groups MUST share their private GitHub repositories with ALL members of the module team:
+•    Dr Gordon Johnson – g.johnson@kingston.ac.uk 
+•    Prof Graeme Jones – g.jones@kingston.ac.uk 
+•    Dr Nandita Pattnaik – n.pattnaik@kingston.ac.uk 
+
+If we cannot access your repository then we can’t mark it and this may result in zero marks awarded.
+
+Each student must:
+•    Use their own FREE GitHub Pro account
+•    Make regular, traceable commits
+•    Contribute code, documentation, or assets
+•    Demonstrate engagement across the project lifecycle
+•    Marks are awarded individually based on visible contribution and quality of work.
+
+A repository with minimal or last-minute commits will negatively impact marks.
+
+2.    Individual Reflection Report (Individual Submission)
+
+Indicative length: 500–1000 words
+
+A concise reflective report focusing on your personal learning and decisions. Can include:
+•    Your role and contribution
+•    Key design or technical decisions you influenced
+•    Rationale for platform choice (native vs cross-platform)
+•    How and why sensors were used
+•    What went well and what did not
+•    What you would improve with more time
+•    Brief reflection on agile teamwork
+
+This reflection demonstrates your individual understanding and engagement.
+
+3.    Individual Demonstration Video (Individual Submission)
+
+Each student must submit their own video demonstrating their understanding and contributions.
+You may use the shared app, but the walkthrough and explanation must be your own.
+
+Video Length: Maximum 10 minutes
+
+Suggested Structure:
+
+Part 1 – Context (2–3 minutes) 
+•    Purpose of the app
+•    Target users
+•    Main goals
+•    Implemented gameplay mode(s)
+
+Part 2 – Demonstration (7–8 minutes) 
+Show and explain:
+•    Map and location features
+•    Cache discovery and unlocking
+•    Sensor integration
+•    Event or global mode features
+•    Scoring or achievements
+•    Features you personally worked on
+
+Focus on working functionality and technical understanding.
+
+Submission Details
+•    Upload MP4 to Canvas or submit a URL
+•    Each student submits individually
+
+Submission Guidance
+Test your app thoroughly before recording your video
+Ensure permissions and sensor features are demonstrated clearly
+Avoid unnecessary complexity that harms usability
+Monitor Canvas for deadlines and viva announcements
+ 
+
+The Use of Generative AI
+Can I use Generative AI (GAI) as part of this Task?
+Default use of GAI: you are permitted to use Generative AI for the following purposes:
+
+Support spelling, punctuation and grammar.
+Support ideation.
+Create a structure or outline for the assignment.
+Support research for the assignment (identifying sources, search).
+Take the role of a constructive critic.
+Aid understanding.
+Produce media artefacts to support the assignment where the artefacts are not the primary focus of the assessment.
+Perform basic image / media editing encompassing cropping, noise reduction, sharpening, enlarging, compression, changing format type and adjusting lighting.
+Code completion within an IDE.
+Debugging (i.e. the location of errors and not the generation of
+alternative code).
+Please note: all of the core writing, creativity, arguments, analysis and reasoning must be your own
+
+For further details on this GAI Assessment category please see:
+
+Student Guide to GAI at Kingston University 2025/6 in the Digital Learning and Tools module in Canvas (Generative AI section).
+
+Do I need to declare my use of GAI tools?
+Yes, if you use Generative AI for any part of your assessment, you must declare this. This applies to all assessments including those in the default and explicit categories.
+
+For this assignment the declaration should be provided at the end of the submission with the heading ‘Acknowledgement of GAI Contribution’. This declaration should include a statement on the use of generative AI including the extent of use, and how it was used as part of all stages in creating the final submission.
+
+For assessments that fall into the explicit category (does not apply to the purposes listed in the Default category), any GAI content included in the assignment, e.g., a quoted paragraph of text or an image, should be properly cited as with any non-GAI source.
+
+Further guidance on completing this acknowledgement is provided in the Digital Learning and Tools module in Canvas (Generative AI section).
+
+The module team may also provide additional advice on the specific details required, depending on the nature of the GAI tool used.
+
+You will also need to read and accept the Academic Integrity / Similarity Process Declaration 2025/6Links to an external site. when submitting an assignment in Canvas.
+
+Academic Misconduct
+Plagiarism. All code must be developed by yourself i.e. you cannot use unauthorised third-party code, code written by another student, or code generated by an AI tool. At a minimum, the penalty for plagiarism will be a ZERO mark, the retaking of a similar coursework in the summer for a capped mark, and a misconduct record on your university transcript. Further details can be found at: Kingston University Academic Misconduct PolicyLinks to an external site..
+
+Collusion is also academic misconduct i.e. helping another student. Be aware that desperate "friends" will simply copy anything you show them and will also pass it onto their "friends". You will then be guilty of academic misconduct.
+
+For help and advice on this assessment please contact the assessment setter/s or the module leader. For advice on academic writing and referencing please contact the ECE subject librarian. 
+
+ 
