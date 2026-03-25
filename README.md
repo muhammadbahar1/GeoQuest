@@ -6,6 +6,9 @@ GeoQuest is an android app to facilitate users to discover and log virtual cache
 
 ## UI Theme, Design System(Colors, Themes and Typography)
 
+Figma High Fidelity link: https://www.figma.com/design/YFxsUfvjkq2P6BsHI1dq8J/GeoQuest?node-id=1-2&t=e1mu5HOpQoXMxQx9-1
+Figma Prototype walkthrough:https://www.figma.com/proto/YFxsUfvjkq2P6BsHI1dq8J/GeoQuest?node-id=11-5&t=e1mu5HOpQoXMxQx9-1&starting-point-node-id=11%3A5
+
 ### Color Palette
 https://coolors.co/dad7cd-a3b18a-588157-3a5a40-344e41
 
