@@ -21,8 +21,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        // Allows android context to be accessed
+        var globalContext = this
+
         enableEdgeToEdge()
         setContent {
+
                 Text("hello")
 
         }
