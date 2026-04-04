@@ -46,7 +46,7 @@ Infrastructure
 - AWS EC2, S3, RDS PostgreSQL
 
 API endpoint:
-ubuntu@ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
+ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
 
 DB Endpoint:
 geoquestdb.c9ws8w4gcpk4.eu-west-2.rds.amazonaws.com
