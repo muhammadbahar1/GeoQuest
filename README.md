@@ -43,7 +43,7 @@ Database
 - PostgreSQL 18.3
 
 Infrastructure
-- AWS EC2, S3, RDS PostgreSQL
+- AWS EC2, S3, RDS PostgreSQL, Route 53
 
 API endpoint:
 ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
@@ -53,6 +53,8 @@ geoquestdb.c9ws8w4gcpk4.eu-west-2.rds.amazonaws.com
 username: postgres
 password: ab.w7AsjV3VY6Q-
 
+connect to DB from ec2
+psql "host=$RDSHOST port=5432 dbname=postgres user=postgres sslmode=verify-full sslrootcert=./global-bundle.pem"
 ### System Architecture
 
 Mobile App -> REST API -> Service Layer -> Data Layer -> DB
@@ -65,12 +67,17 @@ Mobile App:
 Full Stack Application:
 - MVC
 
-##API
+## API
 
-#to login to ec2.micro:
-#go to directory and run you may need to copy .pem file to somewhere else first
+api docs:
+
+# to login to ec2.micro:
+go to directory and run you may need to copy .pem file to somewhere else first
 ssh -i "GeoQuestVPS.pem" ubuntu@ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
 vim main.py
+
+login to db with ec2:
+psql "host=$RDSHOST port=5432 dbname=postgres user=postgres sslmode=verify-full sslrootcert=./global-bundle.pem"
 
 ## Authors
 - Muhammad Yusuf Bahar (K2323158) (M.Bahar@kingston.ac.uk)
