@@ -30,7 +30,7 @@ Coursework Specification
 Assessment Criteria
 Submission Requirements
 Use of Generative AI
-Academic Misconduct
+Academic Misconduct....
 Purpose of this assessment
 Coursework Overview: GeoQuest - Location-Based Treasure Hunt App
 This is a mobile application development project in which you will develop a significant mobile application in pairs using an agile approach. You will allocated the technology to develop within either React Native (JS), Android (Kotlin), or iOS (Swift).
