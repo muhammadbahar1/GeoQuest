@@ -8,6 +8,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Map
+import android.annotation.SuppressLint
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.Priority
+import com.google.android.gms.tasks.CancellationTokenSource
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -91,6 +95,7 @@ fun GlobalModeScreen() {
     }
 }
 
+@SuppressLint("MissingPermission")
 @Composable
 fun MapTabContent() {
     val context = LocalContext.current
@@ -111,19 +116,40 @@ fun MapTabContent() {
         hasLocationPermission = granted
     }
 
-    // Fetch caches from API
-    LaunchedEffect(Unit) {
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(LatLng(51.5, -0.1), 14f)
+    }
+
+    // Continuously follow user location
+    LaunchedEffect(hasLocationPermission) {
         if (!hasLocationPermission) {
             permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+        } else {
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+            val locationRequest = com.google.android.gms.location.LocationRequest.Builder(
+                Priority.PRIORITY_HIGH_ACCURACY,
+                2000L // update every 2 seconds
+            ).build()
+
+            val locationCallback = object : com.google.android.gms.location.LocationCallback() {
+                override fun onLocationResult(result: com.google.android.gms.location.LocationResult) {
+                    result.lastLocation?.let { location ->
+                        cameraPositionState.position = CameraPosition.fromLatLngZoom(
+                            LatLng(location.latitude, location.longitude),
+                            14f
+                        )
+                    }
+                }
+            }
+
+            fusedLocationClient.requestLocationUpdates(
+                locationRequest,
+                locationCallback,
+                android.os.Looper.getMainLooper()
+            )
         }
         caches = fetchCaches()
         isLoading = false
-    }
-
-    // Default to London area since caches seem to be in UK
-    val defaultLocation = LatLng(51.5, -0.1)
-    val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(defaultLocation, 10f)
     }
 
     if (isLoading) {
