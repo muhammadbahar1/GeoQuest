@@ -68,15 +68,17 @@ Full Stack Application:
 
 ## API
 
-api docs:
+api docs: 
 
-# to login to ec2.micro:
+ec2-13-134-244-170.eu-west-2.compute.amazonaws.com/docs
+
+## to login to ec2.micro:
 go to directory and run you may need to copy .pem file to somewhere else first
 
 ssh -i "GeoQuestVPS.pem" ubuntu@ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
 
 
-# login to db with ec2:
+## login to db with ec2:
 psql --host=geoquestdb.c9ws8w4gcpk4.eu-west-2.rds.amazonaws.com --port=5432 --username=postgres --password --dbname=postgres
 
 db password: ab.w7AsjV3VY6Q-
