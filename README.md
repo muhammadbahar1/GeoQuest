@@ -51,7 +51,6 @@ Pine Teal:#344E41
 ### Tech Stack
 Frontend:
 - Native Android Jetpack compose(Kotlin)
-- Room DB(SQLite wrapper)
 
 Backend:
 - FastAPI 0.135.3
@@ -60,7 +59,7 @@ Database
 - PostgreSQL 18.3
 
 Infrastructure
-- AWS EC2, S3, RDS PostgreSQL, Route 53
+- AWS EC2, RDS PostgreSQL
 
 API endpoint:
 ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
