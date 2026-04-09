@@ -2,7 +2,12 @@ package ac.uk.kingston.k2323158.geoquest.ui.screens
 
 import android.annotation.SuppressLint
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
@@ -54,6 +59,7 @@ fun GlobalModeScreen(
             when (selectedTab) {
                 0 -> MapTabContent(
                     mapViewModel = mapViewModel,
+                    leaderboardViewModel = leaderboardViewModel,
                     profileViewModel = profileViewModel
                 )
                 1 -> NotificationsTabContent(mapViewModel = mapViewModel)
@@ -67,6 +73,7 @@ fun GlobalModeScreen(
 @Composable
 fun MapTabContent(
     mapViewModel: MapViewModel,
+    leaderboardViewModel: LeaderboardViewModel,
     profileViewModel: ProfileViewModel
 ) {
     val context = LocalContext.current
@@ -93,6 +100,32 @@ fun MapTabContent(
         hasLocationPermission = granted
     }
 
+    // Compass sensor
+    var bearing by remember { mutableStateOf(0f) }
+    val sensorManager = context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
+    val rotationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
+
+    DisposableEffect(Unit) {
+        val sensorListener = object : SensorEventListener {
+            override fun onSensorChanged(event: SensorEvent) {
+                val rotationMatrix = FloatArray(9)
+                SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values)
+                val orientation = FloatArray(3)
+                SensorManager.getOrientation(rotationMatrix, orientation)
+                bearing = Math.toDegrees(orientation[0].toDouble()).toFloat()
+            }
+            override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+        }
+        sensorManager.registerListener(
+            sensorListener,
+            rotationSensor,
+            SensorManager.SENSOR_DELAY_UI
+        )
+        onDispose {
+            sensorManager.unregisterListener(sensorListener)
+        }
+    }
+
     val cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(LatLng(51.5, -0.1), 14f)
     }
@@ -110,9 +143,11 @@ fun MapTabContent(
             val locationCallback = object : com.google.android.gms.location.LocationCallback() {
                 override fun onLocationResult(result: com.google.android.gms.location.LocationResult) {
                     result.lastLocation?.let { location ->
-                        cameraPositionState.position = CameraPosition.fromLatLngZoom(
+                        cameraPositionState.position = CameraPosition(
                             LatLng(location.latitude, location.longitude),
-                            14f
+                            14f,
+                            0f,
+                            bearing
                         )
 
                         caches.forEach { cache ->
@@ -127,7 +162,9 @@ fun MapTabContent(
                                 )
 
                                 if (distance[0] <= 10f) {
-                                    mapViewModel.onCacheFound(username, cache)
+                                    mapViewModel.onCacheFound(username, cache) {
+                                        leaderboardViewModel.fetchLeaderboard()
+                                    }
                                     profileViewModel.updateScore(cache.cachePoints)
                                     coroutineScope.launch {
                                         snackbarHostState.showSnackbar(
@@ -176,7 +213,11 @@ fun MapTabContent(
                         .fillMaxSize()
                         .padding(padding),
                     cameraPositionState = cameraPositionState,
-                    properties = MapProperties(isMyLocationEnabled = hasLocationPermission)
+                    properties = MapProperties(isMyLocationEnabled = hasLocationPermission),
+                    uiSettings = MapUiSettings(
+                        compassEnabled = true,
+                        myLocationButtonEnabled = true
+                    )
                 ) {
                     caches.forEach { cache ->
                         val isClaimed = claimedCaches.contains(cache.cacheId)

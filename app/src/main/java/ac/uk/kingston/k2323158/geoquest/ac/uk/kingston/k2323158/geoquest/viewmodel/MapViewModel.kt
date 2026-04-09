@@ -78,7 +78,7 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun onCacheFound(username: String, cache: CacheItem) {
+    fun onCacheFound(username: String, cache: CacheItem, onComplete: () -> Unit = {}) {
         if (_claimedCaches.value.contains(cache.cacheId)) return
 
         _claimedCaches.value = _claimedCaches.value + cache.cacheId
@@ -87,29 +87,30 @@ class MapViewModel(application: Application) : AndroidViewModel(application) {
         val message = "Cache found: ${cache.cacheName} +${cache.cachePoints} pts! Total: ${_userScore.value} pts"
         _alerts.value = listOf(message) + _alerts.value
 
-        postCacheFound(username, cache.cacheId)
+        viewModelScope.launch {
+            postCacheFound(username, cache.cacheId)
+            onComplete()
+        }
     }
 
-    private fun postCacheFound(username: String, cacheId: Int) {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                try {
-                    val url = URL("$baseUrl/v1/users")
-                    val connection = url.openConnection() as HttpURLConnection
-                    connection.requestMethod = "POST"
-                    connection.setRequestProperty("Content-Type", "application/json")
-                    connection.doOutput = true
+    private suspend fun postCacheFound(username: String, cacheId: Int) {
+        withContext(Dispatchers.IO) {
+            try {
+                val url = URL("$baseUrl/v1/found_cache")
+                val connection = url.openConnection() as HttpURLConnection
+                connection.requestMethod = "POST"
+                connection.setRequestProperty("Content-Type", "application/json")
+                connection.doOutput = true
 
-                    val body = JSONObject().apply {
-                        put("username", username)
-                        put("cachefound", cacheId)
-                    }.toString()
+                val body = JSONObject().apply {
+                    put("username", username)
+                    put("cacheid", cacheId)
+                }.toString()
 
-                    connection.outputStream.write(body.toByteArray())
-                    android.util.Log.d("MapViewModel", "POST response: ${connection.responseCode}")
-                } catch (e: Exception) {
-                    android.util.Log.e("MapViewModel", "Error posting cache: ${e.message}")
-                }
+                connection.outputStream.write(body.toByteArray())
+                android.util.Log.d("MapViewModel", "Cache claimed! Response: ${connection.responseCode}")
+            } catch (e: Exception) {
+                android.util.Log.e("MapViewModel", "Error posting cache: ${e.message}")
             }
         }
     }
