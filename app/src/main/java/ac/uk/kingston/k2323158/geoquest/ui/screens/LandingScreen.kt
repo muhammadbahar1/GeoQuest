@@ -76,14 +76,7 @@ fun LandingScreen(onModeSelected: () -> Unit) {
         Spacer(modifier = Modifier.Companion.weight(1f))
 
         GeoQuestButton(
-            text = "Global Mode",
-            onClick = onModeSelected
-        )
-
-        Spacer(modifier = Modifier.Companion.height(16.dp))
-
-        GeoQuestButton(
-            text = "Private Event Mode",
+            text = "Play",
             onClick = onModeSelected
         )
 
