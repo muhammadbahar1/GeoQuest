@@ -35,15 +35,6 @@ Fern:#588157
 Hunter Green:#3A5A40
 Pine Teal:#344E41
 
-### Theme
-
-
-
-### Typography
-
-## Features
-
- 
 
 
 ## Tech Stack, System Architecture, Archietectural Pattern
@@ -83,6 +74,10 @@ Full Stack Application:
 - MVC
 
 ## API
+
+to access api:
+
+ec2-13-134-244-170.eu-west-2.compute.amazonaws.com
 
 api docs: 
 
