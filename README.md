@@ -1,5 +1,22 @@
 # GeoQuest
 
+## INSTRUCTIONS HOW TO BUILD APP(Read these instructions carefully!)
+
+1.Clone the Repository
+
+2.Open in Android Studio
+3.Open Android Studio
+4.Click File → Open
+5.Select the GeoQuest folder
+6.Wait for Gradle to sync automatically
+
+7.Run the App
+8.Connect an Android device or start an emulator
+Click the green Run button
+Allow location permissions when prompted
+
+
+
 ## Description
 GeoQuest is an android app to facilitate users to discover and log virtual caches tied to real-world GPS locations. Users must physically travel to locations and use mobile sensors and application features to unlock and record finds.
 
