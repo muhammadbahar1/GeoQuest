@@ -16,7 +16,6 @@ val navBarItems = listOf(
     NavBarItem("Map", Icons.Default.Map),
     NavBarItem("Alerts", Icons.Default.Notifications),
     NavBarItem("Ranks", Icons.Default.EmojiEvents),
-    NavBarItem("Profile", Icons.Default.Person)
 )
 
 @Composable

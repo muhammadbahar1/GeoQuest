@@ -14,49 +14,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ac.uk.kingston.k2323158.geoquest.ui.theme.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.json.JSONArray
-import java.net.URL
-
-data class LeaderboardEntry(val username: String, val score: Int)
-
-suspend fun fetchLeaderboard(): List<LeaderboardEntry> {
-    return withContext(Dispatchers.IO) {
-        try {
-            val url = "http://ec2-13-134-244-170.eu-west-2.compute.amazonaws.com/v1/users"
-            val response = URL(url).readText()
-            val jsonArray = JSONArray(response)
-            val users = mutableListOf<LeaderboardEntry>()
-            for (i in 0 until jsonArray.length()) {
-                val obj = jsonArray.getJSONObject(i)
-                users.add(
-                    LeaderboardEntry(
-                        username = obj.getString("username"),
-                        score = obj.getInt("userpointsglobal")
-                    )
-                )
-            }
-            // Sort by highest score first
-            users.sortedByDescending { it.score }
-        } catch (e: Exception) {
-            emptyList()
-        }
-    }
-}
+import ac.uk.kingston.k2323158.geoquest.viewmodel.LeaderboardViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun LeaderboardTabContent() {
-    var entries by remember { mutableStateOf<List<LeaderboardEntry>>(emptyList()) }
-    var isLoading by remember { mutableStateOf(true) }
-
-    LaunchedEffect(Unit) {
-        entries = fetchLeaderboard()
-        isLoading = false
-    }
+fun LeaderboardTabContent(leaderboardViewModel: LeaderboardViewModel) {
+    val entries by leaderboardViewModel.entries.collectAsStateWithLifecycle()
+    val isLoading by leaderboardViewModel.isLoading.collectAsStateWithLifecycle()
 
     Column(modifier = Modifier.fillMaxSize()) {
-        // Header
         Box(
             modifier = Modifier
                 .fillMaxWidth()
