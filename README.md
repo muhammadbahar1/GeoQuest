@@ -1,6 +1,6 @@
 # GeoQuest
 
-## INSTRUCTIONS HOW TO BUILD APP(Read these instructions carefully!)
+## INSTRUCTIONS HOW TO BUILD APP
 
 1.Clone the Repository
 
